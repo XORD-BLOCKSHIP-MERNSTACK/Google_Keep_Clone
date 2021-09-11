@@ -1,7 +1,7 @@
 import React from 'react';
 
-const addChecklist = () => {
+const AddChecklist = () => {
   return <div>Add Checklist</div>;
 };
 
-export default addChecklist;
+export default AddChecklist;

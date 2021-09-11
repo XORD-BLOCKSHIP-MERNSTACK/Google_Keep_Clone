@@ -1,11 +1,9 @@
 import './App.css';
+//React Components
+import Navigation from './navigation/Navigation';
 
 function App() {
-  return (
-    <div className='App'>
-      <h1>Google Keep Clone</h1>
-    </div>
-  );
+  return <Navigation />;
 }
 
 export default App;
