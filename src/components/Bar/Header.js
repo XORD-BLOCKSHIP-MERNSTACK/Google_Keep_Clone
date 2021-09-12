@@ -20,26 +20,26 @@ const Header = () => {
           <SearchBar />
         </div>
         <div className='user'>
-          <h6>User</h6>
+          <h6>User </h6>
         </div>
       </div>
-      <nav class='nav__cont'>
-        <ul class='nav'>
+      <nav className='nav__cont'>
+        <ul className='nav'>
           <Link to='/'>
-            <li class='nav__items '>
-              <i class='far fa-lightbulb'></i>
+            <li className='nav__items '>
+              <i className='far fa-lightbulb'></i>
               <p>Notes</p>
             </li>
           </Link>
           <Link to='/archieve'>
-            <li class='nav__items '>
-              <i class='fas fa-archive'></i>
+            <li className='nav__items '>
+              <i className='fas fa-archive'></i>
               <p>Archieve</p>
             </li>
           </Link>
           <Link to='/bin'>
-            <li class='nav__items '>
-              <i class='far fa-trash-alt'></i>
+            <li className='nav__items '>
+              <i className='far fa-trash-alt'></i>
               <p>Bin</p>
             </li>
           </Link>

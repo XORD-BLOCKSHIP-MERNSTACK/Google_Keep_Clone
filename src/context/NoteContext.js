@@ -1,64 +1,51 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 // Context Creating using createContext
 export const NoteContext = createContext();
 export const NoteActionContext = createContext();
 
-// Temporary Data
-const nnotes = [
-  {
-    id: 1,
-    title: 'My First Note',
-    note: 'first thing i have to do',
-    pin: false,
-  },
-  {
-    id: 2,
-    title: 'My Second Note',
-    note: 'Second thing i have to do',
-    pin: true,
-  },
-  {
-    id: 3,
-    title: 'My Third Note',
-    note: 'Third thing i have to do',
-    pin: false,
-  },
-  {
-    id: 4,
-    title: 'My Fourth Note',
-    note: 'Fourth thing i have to do',
-    pin: true,
-  },
-  {
-    id: 5,
-    title: 'My Fifth Note',
-    note: 'Fifth thing i have to do',
-    pin: false,
-  },
-  {
-    id: 6,
-    title: 'My Sixth Note',
-    note: 'Sixth thing i have to do',
-    pin: true,
-  },
-];
-
 const NoteContextProvider = (props) => {
-  const [notes, setNotes] = useState(nnotes);
-  const [deletedNotes, setDeletedNotes] = useState(nnotes);
-  const [archievedNotes, setArchievedNotes] = useState(nnotes);
+  const [notes, setNotes] = useState([]);
+  const [deletedNotes, setDeletedNotes] = useState([]);
 
   const addNote = (obj) => {
     setNotes([...notes, obj]);
   };
 
-  const archieveNote = () => {};
+  // Archieve Functionality
+  const archieve = (id) => {
+    const index = notes.findIndex((note) => note.id === id);
+    notes[index].archieve = true;
+  };
+
+  const unArchieve = (id) => {
+    const index = notes.findIndex((note) => note.id === id);
+    notes[index].archieve = false;
+  };
+
+  // Pin Functionality
+  const pinned = (id) => {
+    const index = notes.findIndex((note) => note.id === id);
+    notes[index].pin = true;
+  };
+
+  const unPinned = (id) => {
+    const index = notes.findIndex((note) => note.id === id);
+    notes[index].pin = false;
+  };
+
+  //
 
   return (
-    <NoteContext.Provider value={{ notes, deletedNotes, archievedNotes }}>
+    <NoteContext.Provider value={{ notes, deletedNotes }}>
       <NoteActionContext.Provider
-        value={{ setArchievedNotes, setDeletedNotes, setNotes, addNote }}
+        value={{
+          addNote,
+          archieve,
+          unArchieve,
+          pinned,
+          unPinned,
+        }}
       >
         {props.children}
       </NoteActionContext.Provider>

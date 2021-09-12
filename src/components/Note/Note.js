@@ -1,17 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+// Context
+import { NoteActionContext } from '../../context/NoteContext';
 
 const Note = (props) => {
-  const { title, note, pin } = props;
+  const { id, title, note, pin, archiev } = props;
   const [pinStatus, setpinStatus] = useState(pin);
+  const [aarchieve, setAarchieve] = useState(archiev);
+  const { archieve, unArchieve, pinned, unPinned } =
+    useContext(NoteActionContext);
+
+  const handleArchieve = () => {
+    setAarchieve(!aarchieve);
+    !aarchieve ? archieve(id) : unArchieve(id);
+  };
+
+  const handlePin = () => {
+    setpinStatus(!pinStatus);
+    !pinStatus ? pinned(id) : unPinned(id);
+  };
+
+  const handleDelete = () => {};
+
   return (
     <div id='note' className='col-lg-3 col-md-6 col-sm-12'>
       <h4>{title}</h4>
       <p>{note}</p>
-      <button onClick={() => setpinStatus(!pinStatus)}>
-        {pinStatus ? 'p' : 'u'}
-      </button>
+      <button onClick={handlePin}>{pinStatus ? 'p' : 'u'}</button>
       <button>d</button>
-      <button>A</button>
+      <button onClick={handleArchieve}>{aarchieve ? 'NA' : 'A'}</button>
       <button>E</button>
     </div>
   );

@@ -10,8 +10,10 @@ import { NoteContext } from '../context/NoteContext';
 const Notes = () => {
   const { notes } = useContext(NoteContext);
 
-  const pinnedNotes = notes.filter((note) => note.pin === true);
-  const others = notes.filter((note) => note.pin === false);
+  const nonArchieved = notes.filter((note) => note.archieve === false);
+
+  const pinnedNotes = nonArchieved.filter((note) => note.pin === true);
+  const others = nonArchieved.filter((note) => note.pin === false);
 
   return (
     <div className='container'>

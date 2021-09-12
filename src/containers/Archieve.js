@@ -1,20 +1,33 @@
 import React, { useContext } from 'react';
 
 // Custom Components
-import List from '../components/List/List';
+import Note from '../components/Note/Note';
 
 // Context
 import { NoteContext } from '../context/NoteContext';
 
 const Archieve = () => {
-  const { archievedNotes } = useContext(NoteContext);
+  const { notes } = useContext(NoteContext);
+
+  const archivedNotes = notes.filter((note) => note.archieve === true);
   return (
     <div className='container'>
-      {archievedNotes ? (
+      {notes ? (
         <div>
           <h2>Archieve Notes</h2>
           <div className='notes-list'>
-            <List notesList={archievedNotes} />
+            <div className='row'>
+              {archivedNotes.map((data) => (
+                <Note
+                  key={data.id}
+                  title={data.title}
+                  note={data.note}
+                  pin={data.pin}
+                  id={data.id}
+                  archiev={data.archieve}
+                />
+              ))}
+            </div>
           </div>
         </div>
       ) : (

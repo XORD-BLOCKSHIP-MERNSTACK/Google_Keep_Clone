@@ -11,6 +11,7 @@ const NoteForm = () => {
   const [title, setTitle] = useState('');
   const [note, setNote] = useState('');
   const [pin, setPin] = useState(false);
+  const [archive, setArchive] = useState(false);
 
   const Submit = () => {
     let id = uuidv4();
@@ -19,11 +20,13 @@ const NoteForm = () => {
       title: title,
       note: note,
       pin: pin,
+      archieve: archive,
     };
     addNote(obj);
     setNote('');
     setTitle('');
     setPin(false);
+    setArchive(false);
   };
 
   return (
@@ -43,7 +46,7 @@ const NoteForm = () => {
       </div>
       <button onClick={Submit}>Submit</button>
       <button onClick={() => setPin(!pin)}>p</button>
-      <button>A</button>
+      <button onClick={() => setArchive(!archive)}>A</button>
     </div>
   );
 };

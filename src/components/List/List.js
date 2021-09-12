@@ -5,7 +5,7 @@ import Note from '../Note/Note';
 
 const List = (props) => {
   const { notesList } = props;
-  console.log(' notes list', notesList);
+
   return (
     <div className='row'>
       {notesList.map((data) => (
@@ -14,6 +14,8 @@ const List = (props) => {
           title={data.title}
           note={data.note}
           pin={data.pin}
+          id={data.id}
+          archieve={data.archieve}
         />
       ))}
     </div>
