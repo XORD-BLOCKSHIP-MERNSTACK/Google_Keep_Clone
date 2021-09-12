@@ -26,12 +26,22 @@ const NoteContextProvider = (props) => {
   // Pin Functionality
   const pinned = (id) => {
     const index = notes.findIndex((note) => note.id === id);
-    notes[index].pin = true;
+    let newNotes = [...notes];
+    newNotes[index] = {
+      ...newNotes[index],
+      pin: !newNotes[index].pin,
+    };
+    setNotes(newNotes);
   };
 
   const unPinned = (id) => {
     const index = notes.findIndex((note) => note.id === id);
-    notes[index].pin = false;
+    let newNotes = [...notes];
+    newNotes[index] = {
+      ...newNotes[index],
+      pin: !newNotes[index].pin,
+    };
+    setNotes(newNotes);
   };
 
   // Delete Note Functionality
