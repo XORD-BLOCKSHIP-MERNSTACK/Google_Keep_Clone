@@ -2,6 +2,7 @@ import React from 'react';
 
 // Custom Components
 import List from '../components/List/List';
+import NoteForm from '../components/Note/NoteForm';
 
 const Notes = (props) => {
   const { notes } = props;
@@ -10,11 +11,15 @@ const Notes = (props) => {
   const others = notes.filter((note) => note.pin === false);
 
   return (
-    <div>
+    <div className='container'>
+      <div className='note-form-con'>
+        <NoteForm />
+      </div>
+
       {pinnedNotes ? (
-        <div>
-          <h1>Pinned</h1>
-          <div>
+        <div style={{ padding: '20px 0px' }}>
+          <h2>Pinned</h2>
+          <div className='notes-list'>
             <List notesList={pinnedNotes} />
           </div>
         </div>
@@ -22,8 +27,8 @@ const Notes = (props) => {
         <></>
       )}
       {others ? (
-        <div>
-          <h1>Others</h1>
+        <div style={{ padding: '20px 0px' }}>
+          <h2>Others</h2>
           <div>
             <List notesList={others} />
           </div>

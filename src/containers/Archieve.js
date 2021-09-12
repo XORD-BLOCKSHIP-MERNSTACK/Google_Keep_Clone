@@ -4,11 +4,11 @@ import React from 'react';
 import List from '../components/List/List';
 
 const Archieve = (props) => {
-  const [archievedNotes] = props;
+  const { archievedNotes } = props;
   return (
-    <div>
-      <h1>Archieve Notes</h1>
-      <div>
+    <div className='container'>
+      <h2>Archieve Notes</h2>
+      <div className='notes-list'>
         <List notesList={archievedNotes} />
       </div>
     </div>

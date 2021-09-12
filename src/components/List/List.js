@@ -7,7 +7,7 @@ const List = (props) => {
   const { notesList } = props;
   console.log(' notes list', notesList);
   return (
-    <div>
+    <div className='row'>
       {notesList.map((data) => (
         <Note
           key={data.id}

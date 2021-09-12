@@ -4,15 +4,15 @@ const Note = (props) => {
   const { title, note, pin } = props;
   const [pinStatus, setpinStatus] = useState(pin);
   return (
-    <div>
-      <h1>{title}</h1>
+    <div id='note' className='col-lg-3 col-md-6 col-sm-12'>
+      <h4>{title}</h4>
       <p>{note}</p>
       <button onClick={() => setpinStatus(!pinStatus)}>
-        {pinStatus ? 'pinned' : 'unpinned'}
+        {pinStatus ? 'p' : 'u'}
       </button>
-      <button>delete</button>
-      <button>Archieve</button>
-      <button>Edit</button>
+      <button>d</button>
+      <button>A</button>
+      <button>E</button>
     </div>
   );
 };

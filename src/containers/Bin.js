@@ -6,10 +6,12 @@ import List from '../components/List/List';
 const Bin = (props) => {
   const { deletedNotes } = props;
   return (
-    <div>
-      <h1>Deleted Notes</h1>
-      <div>
-        <List notesList={deletedNotes} />
+    <div className='container'>
+      <h2>Deleted Notes</h2>
+      <div className='notes-list'>
+        <div>
+          <List notesList={deletedNotes} />
+        </div>
       </div>
     </div>
   );
