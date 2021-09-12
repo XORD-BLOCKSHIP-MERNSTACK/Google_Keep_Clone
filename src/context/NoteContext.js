@@ -13,28 +13,18 @@ const NoteContextProvider = (props) => {
   };
 
   // Archieve Functionality
-  const archieve = (id) => {
-    const index = notes.findIndex((note) => note.id === id);
-    notes[index].archieve = true;
-  };
-
-  const unArchieve = (id) => {
-    const index = notes.findIndex((note) => note.id === id);
-    notes[index].archieve = false;
-  };
-
-  // Pin Functionality
-  const pinned = (id) => {
+  const handleArchive = (id) => {
     const index = notes.findIndex((note) => note.id === id);
     let newNotes = [...notes];
     newNotes[index] = {
       ...newNotes[index],
-      pin: !newNotes[index].pin,
+      archieve: !newNotes[index].archieve,
     };
     setNotes(newNotes);
   };
 
-  const unPinned = (id) => {
+  // Pin Functionality
+  const handlePin = (id) => {
     const index = notes.findIndex((note) => note.id === id);
     let newNotes = [...notes];
     newNotes[index] = {
@@ -56,10 +46,8 @@ const NoteContextProvider = (props) => {
       <NoteActionContext.Provider
         value={{
           addNote,
-          archieve,
-          unArchieve,
-          pinned,
-          unPinned,
+          handleArchive,
+          handlePin,
           deleteNote,
         }}
       >
