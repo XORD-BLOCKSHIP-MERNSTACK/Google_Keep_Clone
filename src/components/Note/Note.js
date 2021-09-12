@@ -7,7 +7,7 @@ const Note = (props) => {
   const { id, title, note, pin, archiev } = props;
   const [pinStatus, setpinStatus] = useState(pin);
   const [aarchieve, setAarchieve] = useState(archiev);
-  const { archieve, unArchieve, pinned, unPinned } =
+  const { archieve, unArchieve, pinned, unPinned, deleteNote } =
     useContext(NoteActionContext);
 
   const handleArchieve = () => {
@@ -20,14 +20,16 @@ const Note = (props) => {
     !pinStatus ? pinned(id) : unPinned(id);
   };
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    deleteNote(id);
+  };
 
   return (
     <div id='note' className='col-lg-3 col-md-6 col-sm-12'>
       <h4>{title}</h4>
       <p>{note}</p>
       <button onClick={handlePin}>{pinStatus ? 'p' : 'u'}</button>
-      <button>d</button>
+      <button onClick={handleDelete}>d</button>
       <button onClick={handleArchieve}>{aarchieve ? 'NA' : 'A'}</button>
       <button>E</button>
     </div>

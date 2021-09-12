@@ -8,9 +8,9 @@ const List = (props) => {
 
   return (
     <div className='row'>
-      {notesList.map((data) => (
+      {notesList.map((data, index) => (
         <Note
-          key={data.id}
+          key={index}
           title={data.title}
           note={data.note}
           pin={data.pin}

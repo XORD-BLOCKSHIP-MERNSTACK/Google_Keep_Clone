@@ -17,9 +17,9 @@ const Archieve = () => {
           <h2>Archieve Notes</h2>
           <div className='notes-list'>
             <div className='row'>
-              {archivedNotes.map((data) => (
+              {archivedNotes.map((data, index) => (
                 <Note
-                  key={data.id}
+                  key={index}
                   title={data.title}
                   note={data.note}
                   pin={data.pin}

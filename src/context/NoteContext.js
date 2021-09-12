@@ -34,7 +34,12 @@ const NoteContextProvider = (props) => {
     notes[index].pin = false;
   };
 
-  //
+  // Delete Note Functionality
+  const deleteNote = (id) => {
+    const filteredNote = notes.filter((note) => note.id === id);
+    deletedNotes.push(filteredNote);
+    setNotes(notes.filter((note) => note.id !== id));
+  };
 
   return (
     <NoteContext.Provider value={{ notes, deletedNotes }}>
@@ -45,6 +50,7 @@ const NoteContextProvider = (props) => {
           unArchieve,
           pinned,
           unPinned,
+          deleteNote,
         }}
       >
         {props.children}
