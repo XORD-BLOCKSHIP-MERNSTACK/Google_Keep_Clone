@@ -13,15 +13,14 @@ const Header = () => {
     <div>
       <div className='header'>
         <div className='brand'>
-          <i class='fas fa-bars'></i>
-          <img src={Logo} />
+          <img src={Logo} alt='Logo' />
           <h4>Keep</h4>
         </div>
         <div className='search-bar'>
           <SearchBar />
         </div>
         <div className='user'>
-          <h6>User: Ayesha</h6>
+          <h6>User</h6>
         </div>
       </div>
       <nav class='nav__cont'>

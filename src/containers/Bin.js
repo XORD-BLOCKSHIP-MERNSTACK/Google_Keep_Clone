@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 // Custom Components
 import List from '../components/List/List';
 
-const Bin = (props) => {
-  const { deletedNotes } = props;
+// Context
+import { NoteContext } from '../context/NoteContext';
+
+const Bin = () => {
+  const { deletedNotes } = useContext(NoteContext);
   return (
     <div className='container'>
       <h2>Deleted Notes</h2>

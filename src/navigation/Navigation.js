@@ -9,46 +9,6 @@ import Archieve from '../containers/Archieve';
 import Bin from '../containers/Bin';
 import Header from '../components/Bar/Header';
 
-// Temporary Data
-const notes = [
-  {
-    id: 1,
-    title: 'My First Note',
-    note: 'first thing i have to do',
-    pin: false,
-  },
-  {
-    id: 2,
-    title: 'My Second Note',
-    note: 'Second thing i have to do',
-    pin: true,
-  },
-  {
-    id: 3,
-    title: 'My Third Note',
-    note: 'Third thing i have to do',
-    pin: false,
-  },
-  {
-    id: 4,
-    title: 'My Fourth Note',
-    note: 'Fourth thing i have to do',
-    pin: true,
-  },
-  {
-    id: 5,
-    title: 'My Fifth Note',
-    note: 'Fifth thing i have to do',
-    pin: false,
-  },
-  {
-    id: 6,
-    title: 'My Sixth Note',
-    note: 'Sixth thing i have to do',
-    pin: true,
-  },
-];
-
 const Navigation = () => {
   return (
     <Router>
@@ -56,17 +16,9 @@ const Navigation = () => {
         <Header />
 
         <Switch>
-          <Route exact path='/' render={() => <Notes notes={notes} />} />
-          <Route
-            exact
-            path='/archieve'
-            render={() => <Archieve archievedNotes={notes} />}
-          />
-          <Route
-            exact
-            path='/bin'
-            render={() => <Bin deletedNotes={notes} />}
-          />
+          <Route exact path='/' render={() => <Notes />} />
+          <Route exact path='/archieve' render={() => <Archieve />} />
+          <Route exact path='/bin' render={() => <Bin />} />
         </Switch>
       </div>
     </Router>
