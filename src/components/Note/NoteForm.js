@@ -1,5 +1,9 @@
 import React, { useContext, useState } from 'react';
 
+// Icons
+import { RiPushpin2Fill, RiPushpin2Line } from 'react-icons/ri';
+import { BiArchiveIn, BiArchiveOut } from 'react-icons/bi';
+
 // Unique uid generator
 import { v4 as uuidv4 } from 'uuid';
 
@@ -41,12 +45,24 @@ const NoteForm = () => {
         onChange={(e) => setNote(e.target.value)}
         placeholder='Take a note'
       />
-      <div>
-        <h6>Temp inputs</h6>
+      <div className='icons-container'>
+        <div onClick={() => setPin(!pin)}>
+          {pin ? (
+            <RiPushpin2Fill className='note-icon' />
+          ) : (
+            <RiPushpin2Line className='note-icon' />
+          )}
+        </div>
+
+        <div onClick={() => setArchive(!archive)}>
+          {archive ? (
+            <BiArchiveOut className='note-icon' />
+          ) : (
+            <BiArchiveIn className='note-icon' />
+          )}
+        </div>
       </div>
       <button onClick={Submit}>Submit</button>
-      <button onClick={() => setPin(!pin)}>p</button>
-      <button onClick={() => setArchive(!archive)}>A</button>
     </div>
   );
 };
