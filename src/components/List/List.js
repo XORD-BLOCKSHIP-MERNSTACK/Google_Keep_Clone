@@ -4,7 +4,7 @@ import React from 'react';
 import Note from '../Note/Note';
 
 const List = (props) => {
-  const { notesList } = props;
+  const { notesList, list } = props;
 
   return (
     <div className='row'>
@@ -16,6 +16,7 @@ const List = (props) => {
           pin={data.pin}
           id={data.id}
           archieve={data.archieve}
+          listname={list}
         />
       ))}
     </div>

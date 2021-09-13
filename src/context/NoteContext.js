@@ -36,9 +36,20 @@ const NoteContextProvider = (props) => {
 
   // Delete Note Functionality
   const deleteNote = (id) => {
-    const filteredNote = notes.filter((note) => note.id === id);
-    deletedNotes.push(filteredNote);
+    // const filteredNote = notes.filter((note) => note.id === id);
+    const index = notes.findIndex((note) => note.id === id);
+
+    let deletedElement = notes.splice(index, 1);
+    setDeletedNotes([...deletedNotes, deletedElement[0]]);
     setNotes(notes.filter((note) => note.id !== id));
+
+    //  const index = notes.findIndex((note) => note.id === id);
+    //  let newNotes = [...notes];
+    //  newNotes[index] = {
+    //    ...newNotes[index],
+    //    pin: !newNotes[index].pin,
+    //  };
+    //  setNotes(newNotes);
   };
 
   return (

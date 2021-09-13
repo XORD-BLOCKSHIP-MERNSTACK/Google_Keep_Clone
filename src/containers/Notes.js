@@ -25,7 +25,7 @@ const Notes = () => {
         <div style={{ padding: '20px 0px' }}>
           <h2>Pinned</h2>
           <div className='notes-list'>
-            <List notesList={pinnedNotes} />
+            <List notesList={pinnedNotes} list='notes' />
           </div>
         </div>
       ) : (
@@ -35,7 +35,7 @@ const Notes = () => {
         <div style={{ padding: '20px 0px' }}>
           <h2>Others</h2>
           <div>
-            <List notesList={others} />
+            <List notesList={others} list='notes' />
           </div>
         </div>
       ) : (

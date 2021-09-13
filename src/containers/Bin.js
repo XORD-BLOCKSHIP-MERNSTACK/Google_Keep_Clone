@@ -13,7 +13,7 @@ const Bin = () => {
       <h2>Deleted Notes</h2>
       <div className='notes-list'>
         <div>
-          <List notesList={deletedNotes} />
+          <List notesList={deletedNotes} list='delete' />
         </div>
       </div>
     </div>
