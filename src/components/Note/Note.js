@@ -1,4 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+
+// Styled Components
+import { CirclePicker } from 'react-color';
 
 // Icons
 import {
@@ -6,15 +9,18 @@ import {
   RiDeleteBin5Fill,
   RiPushpin2Line,
 } from 'react-icons/ri';
+import { IoColorPaletteOutline } from 'react-icons/io5';
 import { BiArchiveIn, BiArchiveOut, BiEdit } from 'react-icons/bi';
 
 // Context
 import { NoteActionContext } from '../../context/NoteContext';
 
 const Note = (props) => {
-  const { id, title, note, pin, archiev, listname } = props;
-  const { handlePin, handleArchive, deleteNote } =
+  const { id, title, note, pin, archiev, listname, bgcolor } = props;
+  const { handlePin, handleArchive, handleDelete, handleBgColor } =
     useContext(NoteActionContext);
+  const [color, setColor] = useState('#fff');
+  const [showPicker, setShowPicker] = useState(false);
 
   const Archive = () => {
     handleArchive(id);
@@ -25,11 +31,19 @@ const Note = (props) => {
   };
 
   const Delete = () => {
-    deleteNote(id);
+    handleDelete(id);
+  };
+
+  const BackgroundColor = (color) => {
+    handleBgColor(id, color);
   };
 
   return (
-    <div id='note' className='col-lg-3 col-md-6 col-sm-12'>
+    <div
+      style={{ background: bgcolor }}
+      id='note'
+      className='col-lg-3 col-md-6 col-sm-12'
+    >
       <h4>{title}</h4>
       <p>{note}</p>
       {listname === 'delete' ? (
@@ -52,6 +66,21 @@ const Note = (props) => {
             ) : (
               <BiArchiveIn className='note-icon' />
             )}
+          </div>
+          <div>
+            <IoColorPaletteOutline
+              onClick={() => setShowPicker(!showPicker)}
+              className='note-icon'
+            />
+
+            <div className={showPicker ? 'show' : 'hide'}>
+              <CirclePicker
+                color={color}
+                onChangeComplete={(color, event) => BackgroundColor(color.hex)}
+                width={220}
+                height={100}
+              />
+            </div>
           </div>
           <div>
             <BiEdit className='note-icon' />

@@ -8,6 +8,7 @@ const NoteContextProvider = (props) => {
   const [notes, setNotes] = useState([]);
   const [deletedNotes, setDeletedNotes] = useState([]);
 
+  // Add Note Functionality
   const addNote = (obj) => {
     setNotes([...notes, obj]);
   };
@@ -34,22 +35,23 @@ const NoteContextProvider = (props) => {
     setNotes(newNotes);
   };
 
-  // Delete Note Functionality
-  const deleteNote = (id) => {
-    // const filteredNote = notes.filter((note) => note.id === id);
+  // Pin Functionality
+  const handleBgColor = (id, color) => {
     const index = notes.findIndex((note) => note.id === id);
+    let newNotes = [...notes];
+    newNotes[index] = {
+      ...newNotes[index],
+      bgcolor: color,
+    };
+    setNotes(newNotes);
+  };
 
+  // Delete Note Functionality
+  const handleDelete = (id) => {
+    const index = notes.findIndex((note) => note.id === id);
     let deletedElement = notes.splice(index, 1);
     setDeletedNotes([...deletedNotes, deletedElement[0]]);
     setNotes(notes.filter((note) => note.id !== id));
-
-    //  const index = notes.findIndex((note) => note.id === id);
-    //  let newNotes = [...notes];
-    //  newNotes[index] = {
-    //    ...newNotes[index],
-    //    pin: !newNotes[index].pin,
-    //  };
-    //  setNotes(newNotes);
   };
 
   return (
@@ -59,7 +61,8 @@ const NoteContextProvider = (props) => {
           addNote,
           handleArchive,
           handlePin,
-          deleteNote,
+          handleDelete,
+          handleBgColor,
         }}
       >
         {props.children}

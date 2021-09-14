@@ -2,6 +2,10 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+input {
+    outline: none;
+}
+
 
 /* Components */
 
@@ -61,6 +65,7 @@ h4 {
 /* ------Search Bar----- */
 
 .search {
+    width: 700px;
     display: flex;
     align-items: center;
     padding: 10px 20px;
@@ -193,9 +198,9 @@ h4 {
 }
 
 .note-icon {
-    width: 22px;
-    height: 22px;
-    color: #676a6d;
+    width: 17px;
+    height: 17px;
+    color: #252627;
 }
 
 
@@ -211,6 +216,7 @@ h4 {
 }
 
 .note-form {
+    width: 60%;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 2px 3px 4px 2px #b8bdc0;
@@ -230,6 +236,18 @@ textarea {
     display: block;
 }
 
+.show {
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 3px 4px 2px #dfe4e7;
+}
+
+.hide {
+    display: none;
+}
+
 
 /* Note form */
 
@@ -247,4 +265,22 @@ textarea {
 
 .row {
     margin: 20px 0px;
+}
+
+
+/* Containers */
+
+
+/* Media Queries */
+
+@media screen and (max-width: 765px) {
+    .note-form {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1010px) {
+    .search {
+        width: auto;
+    }
 }

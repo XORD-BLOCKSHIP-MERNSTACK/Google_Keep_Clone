@@ -17,6 +17,7 @@ const List = (props) => {
           id={data.id}
           archieve={data.archieve}
           listname={list}
+          bgcolor={data.bgcolor}
         />
       ))}
     </div>
