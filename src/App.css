@@ -171,16 +171,18 @@ h4 {
 /* Note  */
 
 #note {
-    margin: 20px 10px;
+    height: fit-content;
+    margin: 10px 10px;
     padding: 10px;
     border: 1px solid #e3e8eb;
     border-radius: 10px;
 }
 
-.title,
-.note {
-    font-size: 14px;
-    display: flex;
+.text {
+    display: block;
+    max-width: 250px;
+    word-break: break-all;
+    /* optional */
 }
 
 .icons-container {

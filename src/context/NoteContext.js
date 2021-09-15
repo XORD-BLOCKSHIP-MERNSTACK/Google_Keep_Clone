@@ -4,10 +4,62 @@ import React, { createContext, useState } from 'react';
 export const NoteContext = createContext();
 export const NoteActionContext = createContext();
 
+const tempData = [
+  {
+    id: 1,
+    title: 'My First Note',
+    note: 'This is my First Note',
+    pin: true,
+    archieve: false,
+    bgColor: '#fff',
+  },
+  {
+    id: 2,
+    title: 'My Second Note',
+    note: 'This is my Second Note',
+    pin: true,
+    archieve: false,
+    bgColor: '#fff',
+  },
+  {
+    id: 3,
+    title: 'My Third Note',
+    note: 'This is my Third Note',
+    pin: false,
+    archieve: false,
+    bgColor: '#fff',
+  },
+  {
+    id: 4,
+    title: 'My Fourth Note',
+    note: 'This is my Fourth Note',
+    pin: false,
+    archieve: true,
+    bgColor: '#fff',
+  },
+  {
+    id: 5,
+    title: 'My Fifth Note',
+    note: 'This is my Fifth Note',
+    pin: true,
+    archieve: true,
+    bgColor: '#fff',
+  },
+  {
+    id: 6,
+    title: 'My Sixth Note',
+    note: 'This is my Sixth NoteThis is my Sixth NoteThis is my Sixth NoteThis is my Sixth Note',
+    pin: true,
+    archieve: false,
+    bgColor: '#fff',
+  },
+];
+
 const NoteContextProvider = (props) => {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(tempData);
   const [deletedNotes, setDeletedNotes] = useState([]);
   const [searchedNotes, setSearchedNotes] = useState([]);
+
   // Add Note Functionality
   const addNote = (obj) => {
     setNotes([...notes, obj]);
@@ -41,7 +93,7 @@ const NoteContextProvider = (props) => {
     let newNotes = [...notes];
     newNotes[index] = {
       ...newNotes[index],
-      bgcolor: color,
+      bgColor: color,
     };
     setNotes(newNotes);
   };
@@ -70,7 +122,7 @@ const NoteContextProvider = (props) => {
       note: note,
       pin: pin,
       archieve: archive,
-      bgcolor: color,
+      bgColor: color,
     };
     setNotes(newNotes);
   };

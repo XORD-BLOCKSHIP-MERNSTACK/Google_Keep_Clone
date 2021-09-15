@@ -18,7 +18,7 @@ const EditForm = (props) => {
   const [note, setNote] = useState(props.note);
   const [pin, setPin] = useState(props.pin);
   const [archive, setArchive] = useState(props.archiev);
-  const [color, setColor] = useState(props.bgcolor);
+  const [color, setColor] = useState(props.bgColor);
   const [showPicker, setShowPicker] = useState(false);
 
   const Edit = () => {

@@ -31,7 +31,7 @@ const NoteForm = () => {
       note: note,
       pin: pin,
       archieve: archive,
-      bgcolor: color,
+      bgColor: color,
     };
     addNote(obj);
     setNote('');

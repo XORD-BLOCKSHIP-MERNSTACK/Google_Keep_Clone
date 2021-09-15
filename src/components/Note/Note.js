@@ -19,7 +19,7 @@ import { BiArchiveIn, BiArchiveOut, BiEdit } from 'react-icons/bi';
 import { NoteActionContext } from '../../context/NoteContext';
 
 const Note = (props) => {
-  const { id, title, note, pin, archiev, listname, bgcolor } = props;
+  const { id, title, note, pin, archiev, listname, bgColor } = props;
   const { handlePin, handleArchive, handleDelete, handleBgColor } =
     useContext(NoteActionContext);
   const [color, setColor] = useState('#fff');
@@ -44,13 +44,15 @@ const Note = (props) => {
 
   return (
     <div
-      style={{ background: bgcolor }}
+      style={{ background: bgColor }}
       id='note'
       className='col-lg-3 col-md-6 col-sm-12'
     >
-      <div>
-        <h6 className='title'>{title}</h6>
-        <p className='note'>{note}</p>
+      <div className='text'>
+        <h6>{title}</h6>
+      </div>
+      <div className='text'>
+        <h6>{note}</h6>
       </div>
 
       {listname === 'delete' ? (
