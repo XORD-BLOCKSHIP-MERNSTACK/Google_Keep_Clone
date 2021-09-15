@@ -15,7 +15,7 @@ const List = (props) => {
           note={data.note}
           pin={data.pin}
           id={data.id}
-          archieve={data.archieve}
+          archiev={data.archieve}
           listname={list}
           bgcolor={data.bgcolor}
         />
