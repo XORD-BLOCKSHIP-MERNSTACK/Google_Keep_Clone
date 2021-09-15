@@ -7,6 +7,7 @@ import Note from '../components/Note/Note';
 import { NoteContext } from '../context/NoteContext';
 
 const SearchList = () => {
+  // Calling Context
   const { searchedNotes } = useContext(NoteContext);
 
   return (

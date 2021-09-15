@@ -12,8 +12,13 @@ import { CirclePicker } from 'react-color';
 import { NoteActionContext } from '../../context/NoteContext';
 
 const EditForm = (props) => {
+  // Destructuring props
   const { setModalShow } = props;
+
+  // Calling Context
   const { handleEdit } = useContext(NoteActionContext);
+
+  // Creating states
   const [title, setTitle] = useState(props.title);
   const [note, setNote] = useState(props.note);
   const [pin, setPin] = useState(props.pin);
@@ -21,6 +26,7 @@ const EditForm = (props) => {
   const [color, setColor] = useState(props.bgColor);
   const [showPicker, setShowPicker] = useState(false);
 
+  // Edit Function
   const Edit = () => {
     handleEdit(props.id, title, note, pin, archive, color);
     setModalShow(false);

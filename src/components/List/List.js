@@ -4,6 +4,7 @@ import React from 'react';
 import Note from '../Note/Note';
 
 const List = (props) => {
+  // Destructuring props
   const { notesList, list } = props;
 
   return (

@@ -7,9 +7,12 @@ import Note from '../components/Note/Note';
 import { NoteContext } from '../context/NoteContext';
 
 const Archieve = () => {
+  // Calling Context
   const { notes } = useContext(NoteContext);
 
+  // Filtered Notes
   const archivedNotes = notes.filter((note) => note.archieve === true);
+
   return (
     <div className='container'>
       {notes ? (

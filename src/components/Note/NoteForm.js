@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 
+// Styled Components
+import { CirclePicker } from 'react-color';
+
 // Icons
 import { RiPushpin2Fill, RiPushpin2Line } from 'react-icons/ri';
 import { BiArchiveIn, BiArchiveOut } from 'react-icons/bi';
 import { IoColorPaletteOutline } from 'react-icons/io5';
-
-// Styled Components
-import { CirclePicker } from 'react-color';
 
 // Unique uid generator
 import { v4 as uuidv4 } from 'uuid';
@@ -15,7 +15,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { NoteActionContext } from '../../context/NoteContext';
 
 const NoteForm = () => {
+  // Calling Context
   const { addNote } = useContext(NoteActionContext);
+
+  // Creating Context
   const [title, setTitle] = useState('');
   const [note, setNote] = useState('');
   const [pin, setPin] = useState(false);
@@ -23,6 +26,7 @@ const NoteForm = () => {
   const [color, setColor] = useState('#fff');
   const [showPicker, setShowPicker] = useState(false);
 
+  // Add Note Function
   const Submit = () => {
     let id = uuidv4();
     let obj = {
@@ -91,7 +95,7 @@ const NoteForm = () => {
         </div>
 
         <button className='submit' onClick={Submit}>
-          Submit
+          Add Note
         </button>
       </div>
     </div>

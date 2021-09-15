@@ -7,14 +7,17 @@ import { Link } from 'react-router-dom';
 import { NoteActionContext } from '../../context/NoteContext';
 
 const SearchBar = () => {
+  // Calling Context
+  const { handleSearch } = useContext(NoteActionContext);
+  // Creating states
   const [word, setWord] = useState('');
 
-  const { handleSearch } = useContext(NoteActionContext);
-
+  // Search Function
   const Search = (e) => {
     setWord(e.target.value);
     handleSearch(word);
   };
+
   return (
     <div className='search'>
       <Link to='/search'>

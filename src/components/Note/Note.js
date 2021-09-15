@@ -19,25 +19,34 @@ import { BiArchiveIn, BiArchiveOut, BiEdit } from 'react-icons/bi';
 import { NoteActionContext } from '../../context/NoteContext';
 
 const Note = (props) => {
+  // Destruncturing props
   const { id, title, note, pin, archiev, listname, bgColor } = props;
+
+  // Calling Context
   const { handlePin, handleArchive, handleDelete, handleBgColor } =
     useContext(NoteActionContext);
+
+  // Creating states
   const [color, setColor] = useState('#fff');
   const [showPicker, setShowPicker] = useState(false);
   const [modalShow, setModalShow] = useState(false);
 
+  // Archieve
   const Archive = () => {
     handleArchive(id);
   };
 
+  // Pin
   const Pin = () => {
     handlePin(id);
   };
 
+  // Delete
   const Delete = () => {
     handleDelete(id);
   };
 
+  // Background Color
   const BackgroundColor = (color) => {
     handleBgColor(id, color);
   };

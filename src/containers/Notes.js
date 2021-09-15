@@ -8,7 +8,10 @@ import NoteForm from '../components/Note/NoteForm';
 import { NoteContext } from '../context/NoteContext';
 
 const Notes = () => {
+  // Calling Context
   const { notes } = useContext(NoteContext);
+
+  // Filtered Arrays
   const nonArchieved = notes.filter((note) => note.archieve === false);
   const pinnedNotes = nonArchieved.filter((note) => note.pin === true);
   const others = nonArchieved.filter((note) => note.pin === false);

@@ -7,7 +7,9 @@ import List from '../components/List/List';
 import { NoteContext } from '../context/NoteContext';
 
 const Bin = () => {
+  // Calling Context
   const { deletedNotes } = useContext(NoteContext);
+
   return (
     <div className='container'>
       <h2>Deleted Notes</h2>
