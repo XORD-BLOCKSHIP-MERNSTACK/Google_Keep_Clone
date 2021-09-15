@@ -8,37 +8,22 @@ import { IoColorPaletteOutline } from 'react-icons/io5';
 // Styled Components
 import { CirclePicker } from 'react-color';
 
-// Unique uid generator
-import { v4 as uuidv4 } from 'uuid';
-
 // Context
 import { NoteActionContext } from '../../context/NoteContext';
 
-const NoteForm = () => {
-  const { addNote } = useContext(NoteActionContext);
-  const [title, setTitle] = useState('');
-  const [note, setNote] = useState('');
-  const [pin, setPin] = useState(false);
-  const [archive, setArchive] = useState(false);
-  const [color, setColor] = useState('#fff');
+const EditForm = (props) => {
+  const { setModalShow } = props;
+  const { handleEdit } = useContext(NoteActionContext);
+  const [title, setTitle] = useState(props.title);
+  const [note, setNote] = useState(props.note);
+  const [pin, setPin] = useState(props.pin);
+  const [archive, setArchive] = useState(props.archiev);
+  const [color, setColor] = useState(props.bgcolor);
   const [showPicker, setShowPicker] = useState(false);
 
-  const Submit = () => {
-    let id = uuidv4();
-    let obj = {
-      id: id,
-      title: title,
-      note: note,
-      pin: pin,
-      archieve: archive,
-      bgcolor: color,
-    };
-    addNote(obj);
-    setNote('');
-    setTitle('');
-    setPin(false);
-    setArchive(false);
-    setColor('#fff');
+  const Edit = () => {
+    handleEdit(props.id, title, note, pin, archive, color);
+    setModalShow(false);
   };
 
   return (
@@ -90,12 +75,12 @@ const NoteForm = () => {
           </div>
         </div>
 
-        <button className='submit' onClick={Submit}>
-          Submit
+        <button className='submit' onClick={Edit}>
+          Edit
         </button>
       </div>
     </div>
   );
 };
 
-export default NoteForm;
+export default EditForm;

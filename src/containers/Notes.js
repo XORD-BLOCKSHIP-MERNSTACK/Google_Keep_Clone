@@ -9,16 +9,14 @@ import { NoteContext } from '../context/NoteContext';
 
 const Notes = () => {
   const { notes } = useContext(NoteContext);
-
   const nonArchieved = notes.filter((note) => note.archieve === false);
-
   const pinnedNotes = nonArchieved.filter((note) => note.pin === true);
   const others = nonArchieved.filter((note) => note.pin === false);
 
   return (
     <div className='container'>
       <div className='note-form-con'>
-        <NoteForm />
+        <NoteForm form='Submit' />
       </div>
 
       {pinnedNotes ? (

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+// Link for linking to other page
 import { Link } from 'react-router-dom';
 
 // Assets

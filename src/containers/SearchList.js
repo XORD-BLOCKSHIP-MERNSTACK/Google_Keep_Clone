@@ -7,14 +7,14 @@ import Note from '../components/Note/Note';
 import { NoteContext } from '../context/NoteContext';
 
 const SearchList = () => {
-  const { notes } = useContext(NoteContext);
+  const { searchedNotes } = useContext(NoteContext);
 
   return (
     <div className='container'>
-      {notes ? (
+      {searchedNotes ? (
         <div className='notes-list'>
           <div className='row'>
-            {notes.map((data, index) => (
+            {searchedNotes.map((data, index) => (
               <Note
                 key={index}
                 title={data.title}

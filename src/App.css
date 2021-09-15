@@ -177,14 +177,10 @@ h4 {
     border-radius: 10px;
 }
 
-#note h4 {
-    font-size: 20px;
-    color: black;
-}
-
-#note p {
-    padding: 0px 5px;
-    color: black;
+.title,
+.note {
+    font-size: 14px;
+    display: flex;
 }
 
 .icons-container {
@@ -213,6 +209,7 @@ h4 {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 5px;
 }
 
 .note-form {
@@ -225,15 +222,14 @@ h4 {
 textarea {
     width: 100%;
     border: none;
+    padding-top: 2px;
+    display: block;
+    outline: none;
 }
 
 input {
     width: 100%;
     border: none;
-}
-
-textarea {
-    display: block;
 }
 
 .show {
@@ -248,8 +244,48 @@ textarea {
     display: none;
 }
 
+.submit {
+    padding: 0px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(243, 206, 40);
+}
+
+.submit:hover {
+    opacity: 0.7;
+}
+
 
 /* Note form */
+
+
+/* Edit Modal */
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    /* position: fixed; */
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    /* Fallback color */
+    background-color: rgba(179, 170, 170, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Edit Model */
 
 
 /* Containers */

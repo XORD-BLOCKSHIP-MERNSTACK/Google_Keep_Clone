@@ -25,6 +25,7 @@ const Archieve = () => {
                   pin={data.pin}
                   id={data.id}
                   archiev={data.archieve}
+                  bgcolor={data.bgcolor}
                 />
               ))}
             </div>

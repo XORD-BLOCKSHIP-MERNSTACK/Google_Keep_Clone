@@ -3,6 +3,9 @@ import React, { useContext, useState } from 'react';
 // Styled Components
 import { CirclePicker } from 'react-color';
 
+// Custom Components
+import EditForm from './EditForm';
+
 // Icons
 import {
   RiPushpin2Fill,
@@ -21,6 +24,7 @@ const Note = (props) => {
     useContext(NoteActionContext);
   const [color, setColor] = useState('#fff');
   const [showPicker, setShowPicker] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   const Archive = () => {
     handleArchive(id);
@@ -44,8 +48,11 @@ const Note = (props) => {
       id='note'
       className='col-lg-3 col-md-6 col-sm-12'
     >
-      <h4>{title}</h4>
-      <p>{note}</p>
+      <div>
+        <h6 className='title'>{title}</h6>
+        <p className='note'>{note}</p>
+      </div>
+
       {listname === 'delete' ? (
         <></>
       ) : (
@@ -83,7 +90,21 @@ const Note = (props) => {
             </div>
           </div>
           <div>
-            <BiEdit className='note-icon' />
+            <BiEdit className='note-icon' onClick={() => setModalShow(true)} />
+          </div>
+          <div
+            style={{ display: modalShow ? 'block' : 'none' }}
+            className='modal'
+          >
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <EditForm setModalShow={setModalShow} {...props} />
+            </div>
           </div>
         </div>
       )}
