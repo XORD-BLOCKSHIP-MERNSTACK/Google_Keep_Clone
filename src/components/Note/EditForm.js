@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 
 // Icons
-import { RiPushpin2Fill, RiPushpin2Line } from 'react-icons/ri';
+import { RiPushpin2Fill, RiPushpin2Line, RiCloseFill } from 'react-icons/ri';
 import { BiArchiveIn, BiArchiveOut } from 'react-icons/bi';
 import { IoColorPaletteOutline } from 'react-icons/io5';
 
@@ -33,7 +33,15 @@ const EditForm = (props) => {
   };
 
   return (
-    <div className='note-form' style={{ background: color }}>
+    <div className='edit-note-form' style={{ background: color }}>
+      <div
+        style={{ display: 'flex', justifyContent: 'flex-end', padding: '10px' }}
+      >
+        <RiCloseFill
+          onClick={() => setModalShow(false)}
+          className='note-icon'
+        />
+      </div>
       <input
         style={{ background: color }}
         value={title}

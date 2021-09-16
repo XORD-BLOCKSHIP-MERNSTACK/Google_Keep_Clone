@@ -12,18 +12,24 @@ import SearchBar from '../Search/SearchBar';
 const Header = () => {
   return (
     <div>
-      <div className='header'>
-        <div className='brand'>
-          <img src={Logo} alt='Logo' />
-          <h4>Keep</h4>
+      <div>
+        <div className='header'>
+          <div className='brand'>
+            <img src={Logo} alt='Logo' />
+            <h4>Keep</h4>
+          </div>
+          <div className='search-bar'>
+            <SearchBar />
+          </div>
+          <div className='user'>
+            <h6>User </h6>
+          </div>
         </div>
-        <div className='search-bar'>
+        <div className='mobile-search'>
           <SearchBar />
         </div>
-        <div className='user'>
-          <h6>User </h6>
-        </div>
       </div>
+
       <nav className='nav__cont'>
         <ul className='nav'>
           <Link to='/'>
