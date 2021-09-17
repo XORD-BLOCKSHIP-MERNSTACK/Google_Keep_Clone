@@ -12,7 +12,10 @@ const Bin = () => {
 
   return (
     <div className='container'>
-      <h2>Deleted Notes</h2>
+      <div className='heading-con'>
+        <h1>Deleted Notes</h1>
+      </div>
+
       <div className='notes-list'>
         <div>
           <List notesList={deletedNotes} list='delete' />

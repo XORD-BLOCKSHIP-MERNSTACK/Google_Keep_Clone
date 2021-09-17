@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 
+// Styled Components
+import { BiMenu } from 'react-icons/bi';
+
+// Custom Components
+import SearchBar from '../Search/SearchBar';
+
 // Link for linking to other page
 import { Link } from 'react-router-dom';
 
 // Assets
 import Logo from '../../assets/logo192.png';
 
-// Custom Components
-import SearchBar from '../Search/SearchBar';
-
 const Header = () => {
+  const [show, setShow] = useState(false);
+
   return (
     <div>
       <div>
         <div className='header'>
           <div className='brand'>
+            <BiMenu
+              className='menu-icon'
+              onClick={() => setShow(!show)}
+              size={25}
+            />
             <img src={Logo} alt='Logo' />
             <h4>Keep</h4>
           </div>
@@ -24,6 +34,21 @@ const Header = () => {
           <div className='user'>
             <h6>User </h6>
           </div>
+        </div>
+
+        <div
+          className='mobile-menu'
+          style={{ display: show ? 'block' : 'none' }}
+        >
+          <Link className='menu-item' to='/'>
+            Notes
+          </Link>
+          <Link className='menu-item' to='/archieve'>
+            Archive
+          </Link>
+          <Link className='menu-item' to='/bin'>
+            Bin
+          </Link>
         </div>
         <div className='mobile-search'>
           <SearchBar />
@@ -41,7 +66,7 @@ const Header = () => {
           <Link to='/archieve'>
             <li className='nav__items '>
               <i className='fas fa-archive'></i>
-              <p>Archieve</p>
+              <p>Archive</p>
             </li>
           </Link>
           <Link to='/bin'>

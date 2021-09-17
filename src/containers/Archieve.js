@@ -17,7 +17,10 @@ const Archieve = () => {
     <div className='container'>
       {notes ? (
         <div>
-          <h2>Archieve Notes</h2>
+          <div className='heading-con'>
+            <h1>Archive Notes</h1>
+          </div>
+
           <div className='notes-list'>
             <div className='row'>
               {archivedNotes.map((data, index) => (

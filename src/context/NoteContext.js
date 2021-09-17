@@ -8,7 +8,23 @@ const tempData = [
   {
     id: 1,
     title: 'My First Note',
-    note: 'This is my First Note',
+    note: [
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+    ],
     pin: true,
     archieve: false,
     bgColor: '#fff',
@@ -16,7 +32,23 @@ const tempData = [
   {
     id: 2,
     title: 'My Second Note',
-    note: 'This is my Second Note',
+    note: [
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+    ],
     pin: true,
     archieve: false,
     bgColor: '#fff',
@@ -24,7 +56,23 @@ const tempData = [
   {
     id: 3,
     title: 'My Third Note',
-    note: 'This is my Third Note',
+    note: [
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+    ],
     pin: false,
     archieve: false,
     bgColor: '#fff',
@@ -32,7 +80,23 @@ const tempData = [
   {
     id: 4,
     title: 'My Fourth Note',
-    note: 'This is my Fourth Note',
+    note: [
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+    ],
     pin: false,
     archieve: true,
     bgColor: '#fff',
@@ -40,7 +104,23 @@ const tempData = [
   {
     id: 5,
     title: 'My Fifth Note',
-    note: 'This is my Fifth Note',
+    note: [
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+    ],
     pin: true,
     archieve: true,
     bgColor: '#fff',
@@ -48,7 +128,23 @@ const tempData = [
   {
     id: 6,
     title: 'My Sixth Note',
-    note: 'This is my Sixth NoteThis is my Sixth NoteThis is my Sixth NoteThis is my Sixth Note',
+    note: [
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+      {
+        id: 1,
+        subNote: 'This is my First Note',
+        check: false,
+      },
+    ],
     pin: true,
     archieve: false,
     bgColor: '#fff',
@@ -56,7 +152,7 @@ const tempData = [
 ];
 
 const NoteContextProvider = (props) => {
-  const [notes, setNotes] = useState(tempData);
+  const [notes, setNotes] = useState([]);
   const [deletedNotes, setDeletedNotes] = useState([]);
   const [searchedNotes, setSearchedNotes] = useState([]);
 

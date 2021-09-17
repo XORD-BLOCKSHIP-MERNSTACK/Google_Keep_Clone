@@ -14,6 +14,7 @@ import {
 } from 'react-icons/ri';
 import { IoColorPaletteOutline } from 'react-icons/io5';
 import { BiArchiveIn, BiArchiveOut, BiEdit } from 'react-icons/bi';
+import { AiOutlinePlusSquare } from 'react-icons/ai';
 
 // Context
 import { NoteActionContext } from '../../context/NoteContext';
@@ -52,17 +53,20 @@ const Note = (props) => {
   };
 
   return (
-    <div
-      style={{ background: bgColor, padding: '10px' }}
-      className='col-lg-3 col-md-6 col-sm-12'
-    >
-      <div id='note'>
+    <div style={{ padding: '10px' }} className='col-lg-3 col-md-6 col-sm-12'>
+      <div id='note' style={{ background: bgColor }}>
         <div className='text'>
           <h6>{title}</h6>
         </div>
-        <div className='text'>
-          <h6>{note}</h6>
-        </div>
+        {note.length >= 0 ? (
+          note.map((data, index) => (
+            <div key={index} className='text'>
+              <h6>{data.subnote}</h6>
+            </div>
+          ))
+        ) : (
+          <></>
+        )}
 
         {listname === 'delete' ? (
           <></>
@@ -101,6 +105,9 @@ const Note = (props) => {
                   height={100}
                 />
               </div>
+            </div>
+            <div>
+              <AiOutlinePlusSquare className='note-icon' />
             </div>
             <div>
               <BiEdit
