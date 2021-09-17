@@ -236,6 +236,7 @@ h4 {
 }
 
 .note-form {
+    opacity: 0.9;
     width: 60%;
     padding: 20px;
     border-radius: 10px;
@@ -243,9 +244,18 @@ h4 {
 }
 
 .edit-note-form {
+    opacity: 0.9;
     width: 60%;
     padding: 20px;
     border-radius: 10px;
+}
+
+input::placeholder {
+    color: #252627;
+}
+
+textarea::placeholder {
+    color: #252627;
 }
 
 textarea {

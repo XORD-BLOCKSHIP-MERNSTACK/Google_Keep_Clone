@@ -51,7 +51,7 @@ const NoteForm = () => {
       bgColor: color,
     };
     addNote(obj);
-    setNote([]);
+    setNote('');
     setTitle('');
     setPin(false);
     setArchive(false);

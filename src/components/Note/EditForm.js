@@ -13,22 +13,41 @@ import { NoteActionContext } from '../../context/NoteContext';
 
 const EditForm = (props) => {
   // Destructuring props
-  const { setModalShow } = props;
+  const { setModalShow, note } = props;
 
   // Calling Context
   const { handleEdit } = useContext(NoteActionContext);
 
+  // Concatenated note array
+  var noteTxt = '';
+  note.forEach((data) => {
+    noteTxt += data.subnote + ' ';
+  });
+
   // Creating states
   const [title, setTitle] = useState(props.title);
-  const [note, setNote] = useState(props.note);
+  // const [note, setNote] = useState(props.note);
   const [pin, setPin] = useState(props.pin);
   const [archive, setArchive] = useState(props.archiev);
   const [color, setColor] = useState(props.bgColor);
   const [showPicker, setShowPicker] = useState(false);
+  const [noteText, setNoteText] = useState(noteTxt);
 
   // Edit Function
   const Edit = () => {
-    handleEdit(props.id, title, note, pin, archive, color);
+    let newArray = [];
+    if (noteText !== '') {
+      var noteArray = noteText.split(/^/gm);
+      for (let i = 0; i < noteArray.length; i++) {
+        let obj = {
+          id: note[i].id,
+          subnote: noteArray[i],
+          check: note[i].check,
+        };
+        newArray.push(obj);
+      }
+    }
+    handleEdit(props.id, title, newArray, pin, archive, color);
     setModalShow(false);
   };
 
@@ -50,8 +69,8 @@ const EditForm = (props) => {
       />
       <textarea
         style={{ background: color }}
-        value={note}
-        onChange={(e) => setNote(e.target.value)}
+        value={noteText}
+        onChange={(e) => setNoteText(e.target.value)}
         placeholder='Take a note'
       />
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
