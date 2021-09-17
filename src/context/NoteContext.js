@@ -194,6 +194,17 @@ const NoteContextProvider = (props) => {
     setNotes(newNotes);
   };
 
+  // CheckList Functionality
+  const handleCheckList = (id) => {
+    const index = notes.findIndex((note) => note.id === id);
+    let newNotes = [...notes];
+    newNotes[index] = {
+      ...newNotes[index],
+      checklist: !newNotes[index].checklist,
+    };
+    setNotes(newNotes);
+  };
+
   // Delete Note Functionality
   const handleDelete = (id) => {
     const index = notes.findIndex((note) => note.id === id);
@@ -209,7 +220,7 @@ const NoteContextProvider = (props) => {
   };
 
   // Edit Funtcionality
-  const handleEdit = (id, title, note, pin, archive, color) => {
+  const handleEdit = (id, title, note, pin, archive, color, addChecklist) => {
     const index = notes.findIndex((note) => note.id === id);
     let newNotes = [...notes];
     newNotes[index] = {
@@ -219,6 +230,7 @@ const NoteContextProvider = (props) => {
       pin: pin,
       archieve: archive,
       bgColor: color,
+      checklist: addChecklist,
     };
     setNotes(newNotes);
   };
@@ -234,6 +246,7 @@ const NoteContextProvider = (props) => {
           handleBgColor,
           handleSearch,
           handleEdit,
+          handleCheckList,
         }}
       >
         {props.children}

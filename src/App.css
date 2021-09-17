@@ -318,6 +318,22 @@ input {
 /* Edit Model */
 
 
+/* Check */
+
+.check {
+    display: flex;
+    cursor: pointer;
+    position: relative;
+}
+
+.check input {
+    background: #a1a6ac;
+}
+
+
+/* Check */
+
+
 /* Containers */
 
 .container {

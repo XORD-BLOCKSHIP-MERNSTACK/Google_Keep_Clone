@@ -26,6 +26,7 @@ const NoteForm = () => {
   const [archive, setArchive] = useState(false);
   const [color, setColor] = useState('#fff');
   const [showPicker, setShowPicker] = useState(false);
+  const [addChecklist, setAddChecklist] = useState(false);
 
   // Add Note Function
   const Submit = () => {
@@ -49,12 +50,14 @@ const NoteForm = () => {
       pin: pin,
       archieve: archive,
       bgColor: color,
+      checklist: addChecklist,
     };
     addNote(obj);
     setNote('');
     setTitle('');
     setPin(false);
     setArchive(false);
+    setAddChecklist(false);
     setColor('#fff');
   };
 
@@ -66,12 +69,14 @@ const NoteForm = () => {
         onChange={(e) => setTitle(e.target.value)}
         placeholder='Title'
       />
+
       <textarea
         style={{ background: color }}
         value={note}
         onChange={(e) => setNote(e.target.value)}
         placeholder='Take a note'
       />
+
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div className='icons-container'>
           <div onClick={() => setPin(!pin)}>
@@ -89,7 +94,7 @@ const NoteForm = () => {
               <BiArchiveIn className='note-icon' />
             )}
           </div>
-          <div>
+          <div onClick={() => setAddChecklist(!addChecklist)}>
             <AiOutlinePlusSquare className='note-icon' />
           </div>
           <div>

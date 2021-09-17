@@ -5,6 +5,7 @@ import { CirclePicker } from 'react-color';
 
 // Custom Components
 import EditForm from './EditForm';
+import { CheckNote } from './Check';
 
 // Icons
 import {
@@ -21,11 +22,16 @@ import { NoteActionContext } from '../../context/NoteContext';
 
 const Note = (props) => {
   // Destruncturing props
-  const { id, title, note, pin, archiev, listname, bgColor } = props;
+  const { id, title, note, pin, archiev, listname, bgColor, checkList } = props;
 
   // Calling Context
-  const { handlePin, handleArchive, handleDelete, handleBgColor } =
-    useContext(NoteActionContext);
+  const {
+    handlePin,
+    handleArchive,
+    handleDelete,
+    handleBgColor,
+    handleCheckList,
+  } = useContext(NoteActionContext);
 
   // Creating states
   const [color, setColor] = useState('#fff');
@@ -52,6 +58,10 @@ const Note = (props) => {
     handleBgColor(id, color);
   };
 
+  const CheckList = () => {
+    handleCheckList(id);
+  };
+
   return (
     <div style={{ padding: '10px' }} className='col-lg-3 col-md-6 col-sm-12'>
       <div id='note' style={{ background: bgColor }}>
@@ -59,11 +69,15 @@ const Note = (props) => {
           <h6>{title}</h6>
         </div>
         {note.length >= 0 ? (
-          note.map((data, index) => (
-            <div key={index} className='text'>
-              <h6>{data.subnote}</h6>
-            </div>
-          ))
+          checkList ? (
+            note.map((data, index) => <CheckNote key={index} data={data} />)
+          ) : (
+            note.map((data, index) => (
+              <div key={index} className='text'>
+                <h6>{data.subnote}</h6>
+              </div>
+            ))
+          )
         ) : (
           <></>
         )}
@@ -106,7 +120,7 @@ const Note = (props) => {
                 />
               </div>
             </div>
-            <div>
+            <div onClick={CheckList}>
               <AiOutlinePlusSquare className='note-icon' />
             </div>
             <div>
