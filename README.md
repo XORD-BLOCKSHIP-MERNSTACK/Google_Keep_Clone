@@ -1,9 +1,21 @@
-# Google Keep Clone
+# Basic Google Keep Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Functionalities
 
-## Available Scripts
+- Add Note
+- Edit Note
+- Delete Note
+- Pin/Unpin Note
+- Archive/NotArchive
+- Checklist( not completed yet)
+- Search Notes
 
-In the project directory, you can run:
+### Run Project
 
-### `npm start`
+1. Using Link
+
+https://keep-clone-1b772.web.app/
+
+2. Download and run in the project directory using
+
+npm run
