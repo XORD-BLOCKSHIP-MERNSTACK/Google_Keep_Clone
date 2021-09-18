@@ -40,11 +40,11 @@ const EditForm = (props) => {
 
   // Edit Function
   const Edit = () => {
-    console.log('Note text pura milrha hai', noteText);
     if (addChecklist) {
-      console.log('checklist Edit');
+      alert(
+        'Edit Checklist Functionality not added yet to edit it change its form to text by clicking on the same icon'
+      );
     } else {
-      console.log('Without checklist edit');
       let newArray = [];
       if (noteText !== '') {
         var noteArray = noteText.split(/^/gm);
@@ -55,17 +55,14 @@ const EditForm = (props) => {
               subnote: noteArray[i],
               check: note[i].check,
             };
-            console.log('ye tb bnyga jb already note[i] huga', obj);
           } else {
             var obj = {
               id: uuidv4(),
               subnote: noteArray[i],
               check: false,
             };
-            console.log('ye tb bnyga jb note[i] nh hunge', obj);
           }
           newArray.push(obj);
-          console.log('Edited Array', newArray);
         }
       }
       handleEdit(id, title, newArray, pin, archive, color, addChecklist);
