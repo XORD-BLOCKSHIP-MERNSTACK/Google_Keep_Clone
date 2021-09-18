@@ -1,29 +1,29 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 // Link
 import { Link } from 'react-router-dom';
 
-// Context
+import { NoteContext } from '../../context/NoteContext';
 import { NoteActionContext } from '../../context/NoteContext';
 
 const SearchBar = () => {
-  // Calling Context
-  const { handleSearch } = useContext(NoteActionContext);
-  // Creating states
-  const [word, setWord] = useState('');
+  const [search, setSearch] = useState('');
+  const { notes } = useContext(NoteContext);
+  const { setSearchedNotes } = useContext(NoteActionContext);
 
-  // Search Function
-  const Search = (e) => {
-    setWord(e.target.value);
-    handleSearch(word);
-  };
+  useEffect(() => {
+    let FilteredNotes = notes.filter((item) => {
+      return item.title.toLowerCase().includes(search.toLowerCase()) !== false;
+    });
+    setSearchedNotes(FilteredNotes);
+  }, [search, setSearchedNotes, notes]);
 
   return (
     <div className='search'>
       <Link to='/search'>
         <i className='fas fa-search'></i>
       </Link>
-      <input onChange={Search} placeholder='Search' />
+      <input onChange={(e) => setSearch(e.target.value)} placeholder='Search' />
     </div>
   );
 };

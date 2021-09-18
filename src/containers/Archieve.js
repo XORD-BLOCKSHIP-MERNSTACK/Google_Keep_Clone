@@ -32,6 +32,7 @@ const Archieve = () => {
                   id={data.id}
                   archiev={data.archieve}
                   bgColor={data.bgColor}
+                  checkList={data.checklist}
                 />
               ))}
             </div>

@@ -7,14 +7,17 @@ import { CirclePicker } from 'react-color';
 import { RiPushpin2Fill, RiPushpin2Line, RiCloseFill } from 'react-icons/ri';
 import { BiArchiveIn, BiArchiveOut } from 'react-icons/bi';
 import { IoColorPaletteOutline } from 'react-icons/io5';
-import { AiOutlinePlusSquare } from 'react-icons/ai';
+import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai';
+
+// Unique uid generator
+import { v4 as uuidv4 } from 'uuid';
 
 // Context
 import { NoteActionContext } from '../../context/NoteContext';
 
 const EditForm = (props) => {
   // Destructuring props
-  const { setModalShow, note } = props;
+  const { setModalShow, note, id } = props;
 
   // Calling Context
   const { handleEdit } = useContext(NoteActionContext);
@@ -22,7 +25,7 @@ const EditForm = (props) => {
   // Concatenated note array
   var noteTxt = '';
   note.forEach((data) => {
-    noteTxt += data.subnote + ' ';
+    noteTxt += data.subnote + '\n';
   });
 
   // Creating states
@@ -37,24 +40,40 @@ const EditForm = (props) => {
 
   // Edit Function
   const Edit = () => {
-    let newArray = [];
-    if (noteText !== '') {
-      var noteArray = noteText.split(/^/gm);
-      for (let i = 0; i < noteArray.length; i++) {
-        let obj = {
-          id: note[i].id,
-          subnote: noteArray[i],
-          check: note[i].check,
-        };
-        newArray.push(obj);
+    console.log('Note text pura milrha hai', noteText);
+    if (addChecklist) {
+      console.log('checklist Edit');
+    } else {
+      console.log('Without checklist edit');
+      let newArray = [];
+      if (noteText !== '') {
+        var noteArray = noteText.split(/^/gm);
+        for (let i = 0; i < noteArray.length; i++) {
+          if (note[i]) {
+            var obj = {
+              id: note[i].id,
+              subnote: noteArray[i],
+              check: note[i].check,
+            };
+            console.log('ye tb bnyga jb already note[i] huga', obj);
+          } else {
+            var obj = {
+              id: uuidv4(),
+              subnote: noteArray[i],
+              check: false,
+            };
+            console.log('ye tb bnyga jb note[i] nh hunge', obj);
+          }
+          newArray.push(obj);
+          console.log('Edited Array', newArray);
+        }
       }
+      handleEdit(id, title, newArray, pin, archive, color, addChecklist);
+      setModalShow(false);
     }
-    handleEdit(props.id, title, newArray, pin, archive, color, addChecklist);
-    setModalShow(false);
   };
 
-  //
-  const CheckInput = (value) => {};
+  const CheckInput = () => {};
 
   return (
     <div className='edit-note-form' style={{ background: color }}>
@@ -72,24 +91,29 @@ const EditForm = (props) => {
         onChange={(e) => setTitle(e.target.value)}
         placeholder='Title'
       />
-      {/* {addChecklist ? (
+      {addChecklist ? (
         note.map((data, index) => (
-          <div key={index} className='check'>
-            <input checked={data.checklist} type='checkbox' />
+          <div key={index} className='check' style={{ background: color }}>
             <input
+              style={{ background: color }}
+              // checked={data.check}
+              type='checkbox'
+            />
+            <input
+              style={{ background: color }}
               value={data.subnote}
               onChange={(e) => CheckInput(e.target.value)}
             />
           </div>
         ))
-      ) : ( */}
-      <textarea
-        style={{ background: color }}
-        value={noteText}
-        onChange={(e) => setNoteText(e.target.value)}
-        placeholder='Take a note'
-      />
-      {/* )} */}
+      ) : (
+        <textarea
+          style={{ background: color }}
+          value={noteText}
+          onChange={(e) => setNoteText(e.target.value)}
+          placeholder='Take a note'
+        />
+      )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div className='icons-container'>
@@ -108,9 +132,15 @@ const EditForm = (props) => {
               <BiArchiveIn className='note-icon' />
             )}
           </div>
-          <div onClick={() => setAddChecklist(!addChecklist)}>
-            <AiOutlinePlusSquare className='note-icon' />
-          </div>
+          {addChecklist ? (
+            <div onClick={() => setAddChecklist(!addChecklist)}>
+              <AiOutlineMinusSquare className='note-icon' />
+            </div>
+          ) : (
+            <div onClick={() => setAddChecklist(!addChecklist)}>
+              <AiOutlinePlusSquare className='note-icon' />
+            </div>
+          )}
           <div>
             <IoColorPaletteOutline
               onClick={() => setShowPicker(!showPicker)}

@@ -15,7 +15,7 @@ import {
 } from 'react-icons/ri';
 import { IoColorPaletteOutline } from 'react-icons/io5';
 import { BiArchiveIn, BiArchiveOut, BiEdit } from 'react-icons/bi';
-import { AiOutlinePlusSquare } from 'react-icons/ai';
+import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai';
 
 // Context
 import { NoteActionContext } from '../../context/NoteContext';
@@ -34,7 +34,6 @@ const Note = (props) => {
   } = useContext(NoteActionContext);
 
   // Creating states
-  const [color, setColor] = useState('#fff');
   const [showPicker, setShowPicker] = useState(false);
   const [modalShow, setModalShow] = useState(false);
 
@@ -111,7 +110,7 @@ const Note = (props) => {
 
               <div className={showPicker ? 'show' : 'hide'}>
                 <CirclePicker
-                  color={color}
+                  color='#fff'
                   onChangeComplete={(color, event) =>
                     BackgroundColor(color.hex)
                   }
@@ -120,9 +119,16 @@ const Note = (props) => {
                 />
               </div>
             </div>
-            <div onClick={CheckList}>
-              <AiOutlinePlusSquare className='note-icon' />
-            </div>
+            {checkList ? (
+              <div onClick={CheckList}>
+                <AiOutlineMinusSquare className='note-icon' />
+              </div>
+            ) : (
+              <div onClick={CheckList}>
+                <AiOutlinePlusSquare className='note-icon' />
+              </div>
+            )}
+
             <div>
               <BiEdit
                 className='note-icon'

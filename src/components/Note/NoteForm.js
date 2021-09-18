@@ -7,7 +7,7 @@ import { CirclePicker } from 'react-color';
 import { RiPushpin2Fill, RiPushpin2Line } from 'react-icons/ri';
 import { BiArchiveIn, BiArchiveOut } from 'react-icons/bi';
 import { IoColorPaletteOutline } from 'react-icons/io5';
-import { AiOutlinePlusSquare } from 'react-icons/ai';
+import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai';
 
 // Unique uid generator
 import { v4 as uuidv4 } from 'uuid';
@@ -94,9 +94,16 @@ const NoteForm = () => {
               <BiArchiveIn className='note-icon' />
             )}
           </div>
-          <div onClick={() => setAddChecklist(!addChecklist)}>
-            <AiOutlinePlusSquare className='note-icon' />
-          </div>
+          {addChecklist ? (
+            <div onClick={() => setAddChecklist(!addChecklist)}>
+              <AiOutlineMinusSquare className='note-icon' />
+            </div>
+          ) : (
+            <div onClick={() => setAddChecklist(!addChecklist)}>
+              <AiOutlinePlusSquare className='note-icon' />
+            </div>
+          )}
+
           <div>
             <IoColorPaletteOutline
               onClick={() => setShowPicker(!showPicker)}

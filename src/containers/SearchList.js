@@ -23,6 +23,8 @@ const SearchList = () => {
                 pin={data.pin}
                 id={data.id}
                 archiev={data.archieve}
+                bgColor={data.bgColor}
+                checkList={data.checklist}
               />
             ))}
           </div>

@@ -10,142 +10,70 @@ const tempData = [
     title: 'My First Note',
     note: [
       {
-        id: 1,
-        subNote: 'This is my First Note',
+        id: 2,
+        subnote: 'This is my First Note',
         check: false,
       },
       {
-        id: 1,
-        subNote: 'This is my First Note',
+        id: 3,
+        subnote: 'This is my First Note',
         check: false,
       },
       {
-        id: 1,
-        subNote: 'This is my First Note',
+        id: 4,
+        subnote: 'This is my First Note',
         check: false,
       },
     ],
     pin: true,
     archieve: false,
-    bgColor: '#fff',
-  },
-  {
-    id: 2,
-    title: 'My Second Note',
-    note: [
-      {
-        id: 1,
-        subNote: 'This is my First Note',
-        check: false,
-      },
-      {
-        id: 1,
-        subNote: 'This is my First Note',
-        check: false,
-      },
-      {
-        id: 1,
-        subNote: 'This is my First Note',
-        check: false,
-      },
-    ],
-    pin: true,
-    archieve: false,
-    bgColor: '#fff',
-  },
-  {
-    id: 3,
-    title: 'My Third Note',
-    note: [
-      {
-        id: 1,
-        subNote: 'This is my First Note',
-        check: false,
-      },
-      {
-        id: 1,
-        subNote: 'This is my First Note',
-        check: false,
-      },
-      {
-        id: 1,
-        subNote: 'This is my First Note',
-        check: false,
-      },
-    ],
-    pin: false,
-    archieve: false,
-    bgColor: '#fff',
-  },
-  {
-    id: 4,
-    title: 'My Fourth Note',
-    note: [
-      {
-        id: 1,
-        subNote: 'This is my First Note',
-        check: false,
-      },
-      {
-        id: 1,
-        subNote: 'This is my First Note',
-        check: false,
-      },
-      {
-        id: 1,
-        subNote: 'This is my First Note',
-        check: false,
-      },
-    ],
-    pin: false,
-    archieve: true,
     bgColor: '#fff',
   },
   {
     id: 5,
-    title: 'My Fifth Note',
+    title: 'My Second Note',
     note: [
       {
-        id: 1,
-        subNote: 'This is my First Note',
+        id: 6,
+        subnote: 'This is my First Note',
         check: false,
       },
       {
-        id: 1,
-        subNote: 'This is my First Note',
+        id: 7,
+        subnote: 'This is my First Note',
         check: false,
       },
       {
-        id: 1,
-        subNote: 'This is my First Note',
+        id: 8,
+        subnote: 'This is my First Note',
         check: false,
       },
     ],
     pin: true,
-    archieve: true,
+    archieve: false,
     bgColor: '#fff',
   },
   {
-    id: 6,
-    title: 'My Sixth Note',
+    id: 9,
+    title: 'My Third Note',
     note: [
       {
-        id: 1,
-        subNote: 'This is my First Note',
+        id: 10,
+        subnote: 'This is my First Note',
         check: false,
       },
       {
-        id: 1,
-        subNote: 'This is my First Note',
+        id: 11,
+        subnote: 'This is my First Note',
         check: false,
       },
       {
-        id: 1,
-        subNote: 'This is my First Note',
+        id: 12,
+        subnote: 'This is my First Note',
         check: false,
       },
     ],
-    pin: true,
+    pin: false,
     archieve: false,
     bgColor: '#fff',
   },
@@ -213,12 +141,6 @@ const NoteContextProvider = (props) => {
     setNotes(notes.filter((note) => note.id !== id));
   };
 
-  // Search note in list Functionality
-  const handleSearch = (word) => {
-    const newNotes = notes.filter((note) => note.title || note.note === word);
-    setSearchedNotes(newNotes);
-  };
-
   // Edit Funtcionality
   const handleEdit = (id, title, note, pin, archive, color, addChecklist) => {
     const index = notes.findIndex((note) => note.id === id);
@@ -244,9 +166,9 @@ const NoteContextProvider = (props) => {
           handlePin,
           handleDelete,
           handleBgColor,
-          handleSearch,
           handleEdit,
           handleCheckList,
+          setSearchedNotes,
         }}
       >
         {props.children}
