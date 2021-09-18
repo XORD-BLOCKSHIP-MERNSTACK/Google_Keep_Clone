@@ -30,29 +30,37 @@ const NoteForm = () => {
 
   // Add Note Function
   const Submit = () => {
-    let newArray = [];
-    let id = uuidv4();
-    if (note !== '') {
-      var noteArray = note.split(/^/gm);
-      noteArray.forEach((data) => {
-        let obj = {
-          id: uuidv4(),
-          subnote: data,
-          check: false,
-        };
-        newArray.push(obj);
-      });
+    if (title !== '' || note !== '') {
+      let newArray = [];
+      let id = uuidv4();
+      if (note !== '') {
+        var noteArray = note.split(/^/gm);
+        noteArray.forEach((data) => {
+          let obj = {
+            id: uuidv4(),
+            subnote: data,
+            check: false,
+          };
+          newArray.push(obj);
+        });
+      }
+      let obj = {
+        id: id,
+        title: title,
+        note: newArray,
+        pin: pin,
+        archieve: archive,
+        bgColor: color,
+        checklist: addChecklist,
+      };
+      addNote(obj);
+      resetForm();
+    } else {
+      alert('Title or Note is a required field');
     }
-    let obj = {
-      id: id,
-      title: title,
-      note: newArray,
-      pin: pin,
-      archieve: archive,
-      bgColor: color,
-      checklist: addChecklist,
-    };
-    addNote(obj);
+  };
+
+  const resetForm = () => {
     setNote('');
     setTitle('');
     setPin(false);
@@ -94,7 +102,7 @@ const NoteForm = () => {
               <BiArchiveIn className='note-icon' />
             )}
           </div>
-          {addChecklist ? (
+          {/* {addChecklist ? (
             <div onClick={() => setAddChecklist(!addChecklist)}>
               <AiOutlineMinusSquare className='note-icon' />
             </div>
@@ -102,7 +110,7 @@ const NoteForm = () => {
             <div onClick={() => setAddChecklist(!addChecklist)}>
               <AiOutlinePlusSquare className='note-icon' />
             </div>
-          )}
+          )} */}
 
           <div>
             <IoColorPaletteOutline
@@ -114,7 +122,7 @@ const NoteForm = () => {
               <CirclePicker
                 color={color}
                 onChangeComplete={(color, event) => setColor(color.hex)}
-                width={220}
+                width={195}
                 height={100}
               />
             </div>

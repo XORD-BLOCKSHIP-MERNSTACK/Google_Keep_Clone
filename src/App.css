@@ -284,6 +284,7 @@ input {
 }
 
 .submit {
+    outline: none;
     padding: 0px 15px;
     border: none;
     border-radius: 10px;
